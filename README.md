@@ -15,7 +15,7 @@ from graphqlclient import GraphQLClient
 
 client = GraphQLClient('http://graphql-swapi.parseapp.com/')
 
-result = client.execute('''
+films = client.execute('''
 {
   allFilms {
     films {
@@ -25,7 +25,16 @@ result = client.execute('''
 }
 ''')
 
-print(result)
+print(films)
+
+newFilm = client.execute('''
+mutation {
+  createFilm(title: "Moonlight") {
+    title
+  }
+}
+''')
+
 ```
 
 ## License
